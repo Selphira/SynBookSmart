@@ -26,9 +26,10 @@ namespace BookSmart
                 )
                 .SetTypicalOpen(GameRelease.SkyrimSE, "WeightlessThings.esp")
                 .Run(args);
+		book.Name.TryLookup(Language.French, out var i18nBookName);
+        	string spellName = GetSpellNameFromSpellTome(i18nBookName.String);
         }
-	book.Name.TryLookup(Language.French, out var i18nBookName);
-        string spellName = GetSpellNameFromSpellTome(i18nBookName.String);
+	
         
         // Let's get to work!
         public static void RunPatch(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
