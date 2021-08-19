@@ -29,8 +29,7 @@ namespace BookSmart
         }
 	book.Name.TryLookup(Language.French, out var i18nBookName);
         string spellName = GetSpellNameFromSpellTome(i18nBookName.String);
-        byte[] bytes = Encoding.Default.GetBytes(bookName);
-	bookName = Encoding.UTF8.GetString(bytes);
+        
         // Let's get to work!
         public static void RunPatch(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
         {
@@ -73,7 +72,8 @@ namespace BookSmart
 
                 // Actually create the override record
                 var bookOverride = state.PatchMod.Books.GetOrAddAsOverride(book);
-                
+                //byte[] bytes = Encoding.Default.GetBytes(bookName);
+		//bookName = Encoding.UTF8.GetString(bytes);
                 // Special handling for a labelFormat of Star
                 if (settings.labelFormat == Settings.LabelFormat.Étoile)
                 {
