@@ -26,8 +26,6 @@ namespace BookSmart
                 )
                 .SetTypicalOpen(GameRelease.SkyrimSE, "WeightlessThings.esp")
                 .Run(args);
-		book.Name.TryLookup(Language.French, out var i18nBookName);
-        	string spellName = GetSpellNameFromSpellTome(i18nBookName.String);
         }
 	
         
@@ -41,6 +39,8 @@ namespace BookSmart
             // Iterate all winning books from the load order
             foreach (var book in state.LoadOrder.PriorityOrder.OnlyEnabled().Book().WinningOverrides())
             {
+		book.Name.TryLookup(Language.French, out var i18nBookName);
+        	//string spellName = GetSpellNameFromSpellTome(i18nBookName.String);
                 // If the book has no name, skip it
                 if (book.Name == null) { continue; }
 
@@ -91,7 +91,7 @@ namespace BookSmart
                 }
 
                 // Console output
-                Console.WriteLine($"{book.FormKey}: '{book.Name}' -> '{bookOverride.Name}'");
+                Console.WriteLine($"{book.FormKey}: '{i18nBookName}' -> '{bookOverride.Name}'");
             };
         }
 
