@@ -74,9 +74,9 @@ namespace BookSmart
                 if (settings.labelFormat == Settings.LabelFormat.Étoile)
                 {
                     switch (settings.labelPosition) {
-                        case Settings.LabelPosition.Before_Name: { bookOverride.Name = $"*{book.Name.ToString()}"; break; }
-                        case Settings.LabelPosition.After_Name: { bookOverride.Name = $"{book.Name.ToString()}*"; break; }
-                        default: throw new NotImplementedException("Somehow your set Label Position to something that isn't supported.");
+                        case Settings.LabelPosition.Avant: { bookOverride.Name = $"*{book.Name.ToString()}"; break; }
+                        case Settings.LabelPosition.Après: { bookOverride.Name = $"{book.Name.ToString()}*"; break; }
+                        default: throw new NotImplementedException("Vous avez défini une position de label qui n'est pas supportée.");
                     }
                 }
                 // All other labelFormats
@@ -99,25 +99,25 @@ namespace BookSmart
             switch (settings.encapsulatingCharacters)
             {
                 case Settings.EncapsulatingCharacters.Chevrons: { open = "<"; close = ">"; break; }
-                case Settings.EncapsulatingCharacters.Curly_Brackets: { open = "{"; close = "}"; break; }
+                case Settings.EncapsulatingCharacters.Accolades: { open = "{"; close = "}"; break; }
                 case Settings.EncapsulatingCharacters.Parenthèses: { open = "("; close = ")"; break; }
-                case Settings.EncapsulatingCharacters.Square_Brackets: { open = "["; close = "]"; break; }
+                case Settings.EncapsulatingCharacters.Crochets: { open = "["; close = "]"; break; }
                 case Settings.EncapsulatingCharacters.Étoiles: { open = "*"; close = "*"; break; }
-                default: throw new NotImplementedException("Somehow you set Encapsulating Characters to something that isn't supported.");
+                default: throw new NotImplementedException("Vous avez défini des caractères d'encapsulation qui ne sont pas pris en charge.");
             }
 
             return settings.labelPosition switch
             {
-                Settings.LabelPosition.Before_Name => $"{open}{newLabel}{close} {existingName}",
-                Settings.LabelPosition.After_Name => $"{existingName} {open}{newLabel}{close}",
-                _ => throw new NotImplementedException("Somehow your set Label Position to something that isn't supported.")
+                Settings.LabelPosition.Avant => $"{open}{newLabel}{close} {existingName}",
+                Settings.LabelPosition.Après => $"{existingName} {open}{newLabel}{close}",
+                _ => throw new NotImplementedException("Vous avez défini une position du tag qui n'est pas supportée.")
             };
         }
         
         public static List<string> CreateQuestBookCache(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
         {
             Console.WriteLine("--------------------------------------------------------------------");
-            Console.WriteLine("Flipping through the quest library looking for books, please wait...");
+            Console.WriteLine("Je feuillette la bibliothèque des quêtes à la recherche de livres, veuillez patienter...");
             Console.WriteLine("--------------------------------------------------------------------");
 
             List<string> questBookCache = new List<String>();
@@ -215,7 +215,7 @@ namespace BookSmart
             }
             else
             {
-                throw new NotImplementedException("Vous avez défini labelFormat sur quelque chose qui n'est pas supporté.");
+                throw new NotImplementedException("Vous avez défini un format de tag qui n'est pas supporté.");
             }
         }
 
@@ -236,7 +236,7 @@ namespace BookSmart
                         Settings.LabelFormat.Long => "Marqueur carte",
                         Settings.LabelFormat.Court => "Marqueur",
                         Settings.LabelFormat.Étoile => "*",
-                        _ => throw new NotImplementedException("Vous avez défini labelFormat sur quelque chose qui n'est pas supporté.")
+                        _ => throw new NotImplementedException("Vous avez défini un format de tag qui n'est pas supporté.")
                     };
                 }
             }
@@ -277,7 +277,7 @@ namespace BookSmart
                     Settings.LabelFormat.Long => "Quête",
                     Settings.LabelFormat.Court => "Q",
                     Settings.LabelFormat.Étoile => "*",
-                    _ => throw new NotImplementedException("Vous avez défini labelFormat sur quelque chose qui n'est pas supporté.")
+                    _ => throw new NotImplementedException("Vous avez défini un format de tag qui n'est pas supporté.")
                 };
             } else
             {
