@@ -27,16 +27,17 @@ namespace BookSmart
                 .SetTypicalOpen(GameRelease.SkyrimSE, "WeightlessThings.esp")
                 .Run(args);
         }
+	book.Name.TryLookup(Language.French, out var i18nBookName);
+        string spellName = GetSpellNameFromSpellTome(i18nBookName.String);
         byte[] bytes = Encoding.Default.GetBytes(bookName);
-		bookName = Encoding.UTF8.GetString(bytes);
+	bookName = Encoding.UTF8.GetString(bytes);
         // Let's get to work!
         public static void RunPatch(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
         {
             // If quest labels are enabled, create the Quest Book cache first
             List<String> questBookCache = new();
             if (settings.addQuestLabels) { questBookCache = CreateQuestBookCache(state); }
-            book.Name.TryLookup(Language.French, out var i18nBookName);
-            string spellName = GetSpellNameFromSpellTome(i18nBookName.String);
+            
             // Iterate all winning books from the load order
             foreach (var book in state.LoadOrder.PriorityOrder.OnlyEnabled().Book().WinningOverrides())
             {
