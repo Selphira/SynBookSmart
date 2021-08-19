@@ -69,11 +69,10 @@ namespace BookSmart
                 // If we don't have any new tags, no need for an override record
                 if (newTags.Count == 0) { continue; }
 		    
-		bookOverride.TryLookup(Language.French, out var i18nBookName);
-        	//string spellName = GetOrAddAsOverride(i18nBookName.String);
-                // Actually create the override record
+		
+        	// Actually create the override record
                 var bookOverride = state.PatchMod.Books.GetOrAddAsOverride(book);
-                
+                bookOverride.TryLookup(Language.French, out var i18nBookName);
 		    
                 // Special handling for a labelFormat of Star
                 if (settings.labelFormat == Settings.LabelFormat.Étoile)
