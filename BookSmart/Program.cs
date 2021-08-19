@@ -8,13 +8,13 @@ using System.Text;
 
 namespace BookSmart
 {
-	book.Name.TryLookup(Language.French, out var i18nBookName);
+	
     public class Program
     {
         // Settings
         static Lazy<Settings> LazySettings = new Lazy<Settings>();
         static Settings settings => LazySettings.Value;
-        
+        book.Name.TryLookup(Language.French, out var i18nBookName);
         // Initial setup
         public static async Task<int> Main(string[] args)
         {
