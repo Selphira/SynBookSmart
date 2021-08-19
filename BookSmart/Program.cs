@@ -71,11 +71,12 @@ namespace BookSmart
                 // If we don't have any new tags, no need for an override record
                 if (newTags.Count == 0) { continue; }
 		    
-		byte[] bytes = Encoding.Default.GetBytes(bookOverride);
-		bookOverride = Encoding.UTF8.GetString(bytes);
+		
                 // Actually create the override record
                 var bookOverride = state.PatchMod.Books.GetOrAddAsOverride(book);
-                
+                byte[] bytes = Encoding.Default.GetBytes(bookOverride);
+		bookOverride = Encoding.UTF8.GetString(bytes);
+		    
                 // Special handling for a labelFormat of Star
                 if (settings.labelFormat == Settings.LabelFormat.Étoile)
                 {
