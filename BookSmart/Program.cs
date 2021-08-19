@@ -39,7 +39,7 @@ namespace BookSmart
             // Iterate all winning books from the load order
             foreach (var book in state.LoadOrder.PriorityOrder.OnlyEnabled().Book().WinningOverrides())
             {
-		                // If the book has no name, skip it
+		// If the book has no name, skip it
                 if (book.Name == null) { continue; }
 
                 // Store our new tags
@@ -78,19 +78,19 @@ namespace BookSmart
                 if (settings.labelFormat == Settings.LabelFormat.Étoile)
                 {
                     switch (settings.labelPosition) {
-                        case Settings.LabelPosition.Avant: { bookOverride.Name = $"*{book.Name.ToString()}"; break; }
-                        case Settings.LabelPosition.Après: { bookOverride.Name = $"{book.Name.ToString()}*"; break; }
+                        case Settings.LabelPosition.Avant: { bookOverride.Name = $"*{i18nBookName.ToString()}"; break; }
+                        case Settings.LabelPosition.Après: { bookOverride.Name = $"{i18nBookName.ToString()}*"; break; }
                         default: throw new NotImplementedException("Vous avez défini une position de label qui n'est pas supportée.");
                     }
                 }
                 // All other labelFormats
                 else
                 {
-                    bookOverride.Name = GetLabel(book.Name.ToString()!, String.Join("/", newTags));
+                    bookOverride.Name = GetLabel(i18nBookName.ToString()!, String.Join("/", newTags));
                 }
 
                 // Console output
-                Console.WriteLine($"{book.FormKey}: '{book.Name}' -> '{bookOverride.Name}'");
+                Console.WriteLine($"{book.FormKey}: '{i18nBookName}' -> '{bookOverride.Name}'");
             };
         }
 
@@ -282,7 +282,7 @@ namespace BookSmart
                 {
                     if (script.Name.Contains("Quest", StringComparison.OrdinalIgnoreCase) || settings.assumeBookScriptsAreQuests)
                     {
-                        Console.WriteLine($"{book.FormKey}: '{book.Name}' a un script de quête appelé '{script.Name}'.");
+                        Console.WriteLine($"{book.FormKey}: '{i18nBookName}' a un script de quête appelé '{script.Name}'.");
                         isBookQuestRealted = true;
                     }
                 }
