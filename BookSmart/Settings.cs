@@ -24,14 +24,14 @@ namespace BookSmart
         // Label Position
         public enum LabelPosition
         {
-            Before_Name,
-            After_Name
+            Avant,
+            Après
         }
 
         [SynthesisOrder]
         [SynthesisSettingName("Position du tag")]
         [SynthesisTooltip("Où placer le tag lors de la création du nouveau nom.")]
-        public LabelPosition labelPosition { get; set; } = LabelPosition.Before_Name;
+        public LabelPosition labelPosition { get; set; } = LabelPosition.Avant;
 
         // Label Format
         public enum LabelFormat
@@ -50,15 +50,15 @@ namespace BookSmart
         public enum EncapsulatingCharacters
         {
             Parenthèses,
-            Curly_Brackets,
-            Square_Brackets,
+            Accolades,
+            Crochets,
             Chevrons,
             Étoiles           
         }
 
         [SynthesisOrder]
         [SynthesisSettingName("Caractères d'encapsulation")]
-        [SynthesisTooltip("The characters to wrap the skill name in.\r\nParenthèses: ()\r\nCurly Brackets: {}\r\nSquare Brackets: []\r\nChevrons: <>\r\nÉtoiles: *")]
+        [SynthesisTooltip("Les caractères entourant le nom de la compétence.\r\nParenthèses: ()\r\nAccolades: {}\r\nCrochets: []\r\nChevrons: <>\r\nÉtoiles: *")]
         public EncapsulatingCharacters encapsulatingCharacters { get; set; } = EncapsulatingCharacters.Parenthèses;
     }
 }
