@@ -14,7 +14,7 @@ namespace BookSmart
         // Settings
         static Lazy<Settings> LazySettings = new Lazy<Settings>();
         static Settings settings => LazySettings.Value;
-        book.Name.TryLookup(Language.French, out var i18nBookName);
+        
         // Initial setup
         public static async Task<int> Main(string[] args)
         {
@@ -73,7 +73,7 @@ namespace BookSmart
 		
         	// Actually create the override record
                 var bookOverride = state.PatchMod.Books.GetOrAddAsOverride(book);
-                
+                book.Name.TryLookup(Language.French, out var i18nBookName);
 		    
                 // Special handling for a labelFormat of Star
                 if (settings.labelFormat == Settings.LabelFormat.Étoile)
@@ -267,7 +267,7 @@ namespace BookSmart
         public static string? GetQuestLabelName(IBookGetter book, List<string> questBookCache)
         {
             bool isBookQuestRealted = false;
-
+	book.Name.TryLookup(Language.French, out var i18nBookName);
             // Check the Quest Book Cache
             
             if (questBookCache.Contains(book.FormKey.ToString()))
