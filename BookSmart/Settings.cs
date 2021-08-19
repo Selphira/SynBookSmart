@@ -53,12 +53,12 @@ namespace BookSmart
             Curly_Brackets,
             Square_Brackets,
             Chevrons,
-            Stars           
+            Étoiles           
         }
 
         [SynthesisOrder]
         [SynthesisSettingName("Caractères d'encapsulation")]
-        [SynthesisTooltip("The characters to wrap the skill name in.\r\nParenthesis: ()\r\nCurly Brackets: {}\r\nSquare Brackets: []\r\nChevrons: <>\r\nStars: *")]
+        [SynthesisTooltip("The characters to wrap the skill name in.\r\nParenthèses: ()\r\nCurly Brackets: {}\r\nSquare Brackets: []\r\nChevrons: <>\r\nÉtoiles: *")]
         public EncapsulatingCharacters encapsulatingCharacters { get; set; } = EncapsulatingCharacters.Parenthesis;
     }
 }
