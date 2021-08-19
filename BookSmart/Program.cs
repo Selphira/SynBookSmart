@@ -175,10 +175,10 @@ namespace BookSmart
             {
                 return skillTeach.Skill switch
                 {
-                    Skill.HeavyArmor => "Heavy Armor",
-                    Skill.LightArmor => "Light Armor",
-                    Skill.OneHanded => "One-Handed",
-                    Skill.TwoHanded => "Two-Handed",
+                    Skill.HeavyArmor => "Armure lourde",
+                    Skill.LightArmor => "Armure légère",
+                    Skill.OneHanded => "Une main",
+                    Skill.TwoHanded => "Deux mains",
                     _ => skillTeach.Skill.ToString()
                 };
             }
@@ -190,21 +190,21 @@ namespace BookSmart
                     Skill.Alchemy => "Alch",
                     Skill.Alteration => "Altr",
                     Skill.Archery => "Arch",
-                    Skill.Block => "Blck",
+                    Skill.Block => "Pard",
                     Skill.Conjuration => "Conj",
                     Skill.Destruction => "Dest",
                     Skill.Enchanting => "Ench",
-                    Skill.HeavyArmor => "H.Arm",
+                    Skill.HeavyArmor => "Arm.L",
                     Skill.Illusion => "Illu",
-                    Skill.LightArmor => "L.Arm",
-                    Skill.Lockpicking => "Lock",
-                    Skill.OneHanded => "1H",
-                    Skill.Pickpocket => "Pick",
-                    Skill.Restoration => "Resto",
-                    Skill.Smithing => "Smith",
-                    Skill.Sneak => "Snk",
-                    Skill.Speech => "Spch",
-                    Skill.TwoHanded => "2H",
+                    Skill.LightArmor => "Arm.l",
+                    Skill.Lockpicking => "Croch",
+                    Skill.OneHanded => "1M",
+                    Skill.Pickpocket => "Vol",
+                    Skill.Restoration => "Guéri",
+                    Skill.Smithing => "Forge",
+                    Skill.Sneak => "Furti",
+                    Skill.Speech => "Éloq",
+                    Skill.TwoHanded => "2M",
                     _ => skillTeach.Skill.ToString()
                 };
             }
@@ -215,7 +215,7 @@ namespace BookSmart
             }
             else
             {
-                throw new NotImplementedException("Somehow you set labelFormat to something that isn't supported.");
+                throw new NotImplementedException("Vous avez défini labelFormat sur quelque chose qui n'est pas supporté.");
             }
         }
 
@@ -233,10 +233,10 @@ namespace BookSmart
                 {
                     return settings.labelFormat switch
                     {
-                        Settings.LabelFormat.Long => "Map Marker",
-                        Settings.LabelFormat.Short => "Map",
+                        Settings.LabelFormat.Long => "Marqueur carte",
+                        Settings.LabelFormat.Short => "Marqueur",
                         Settings.LabelFormat.Star => "*",
-                        _ => throw new NotImplementedException("Somehow you set labelFormat to something that isn't supported.")
+                        _ => throw new NotImplementedException("Vous avez défini labelFormat sur quelque chose qui n'est pas supporté.")
                     };
                 }
             }
@@ -264,7 +264,7 @@ namespace BookSmart
                 {
                     if (script.Name.Contains("Quest", StringComparison.OrdinalIgnoreCase) || settings.assumeBookScriptsAreQuests)
                     {
-                        Console.WriteLine($"{book.FormKey}: '{book.Name}' has a quest script called '{script.Name}'.");
+                        Console.WriteLine($"{book.FormKey}: '{book.Name}' a un script de quête appelé '{script.Name}'.");
                         isBookQuestRealted = true;
                     }
                 }
@@ -274,10 +274,10 @@ namespace BookSmart
             {
                 return settings.labelFormat switch
                 {
-                    Settings.LabelFormat.Long => "Quest",
+                    Settings.LabelFormat.Long => "Quête",
                     Settings.LabelFormat.Short => "Q",
                     Settings.LabelFormat.Star => "*",
-                    _ => throw new NotImplementedException("Somehow you set labelFormat to something that isn't supported.")
+                    _ => throw new NotImplementedException("Vous avez défini labelFormat sur quelque chose qui n'est pas supporté.")
                 };
             } else
             {
