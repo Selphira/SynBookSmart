@@ -81,8 +81,8 @@ namespace BookSmart
                 if (settings.labelFormat == Settings.LabelFormat.Étoile)
                 {
                     switch (settings.labelPosition) {
-                        case Settings.LabelPosition.Avant: { bookOverride.Name = $"*{book.Name.ToString()}"; break; }
-                        case Settings.LabelPosition.Après: { bookOverride.Name = $"{book.Name.ToString()}*"; break; }
+                        case Settings.LabelPosition.Avant: { bookOverride.Name = $"*{i18nBookName.ToString()}"; break; }
+                        case Settings.LabelPosition.Après: { bookOverride.Name = $"{i18nBookName.ToString()}*"; break; }
                         default: throw new NotImplementedException("Vous avez défini une position de label qui n'est pas supportée.");
                     }
                 }
@@ -285,7 +285,7 @@ namespace BookSmart
                 {
                     if (script.Name.Contains("Quest", StringComparison.OrdinalIgnoreCase) || settings.assumeBookScriptsAreQuests)
                     {
-                        Console.WriteLine($"{book.FormKey}: '{book.Name}' a un script de quête appelé '{script.Name}'.");
+                        Console.WriteLine($"{book.FormKey}: '{i18nBookName}' a un script de quête appelé '{script.Name}'.");
                         isBookQuestRealted = true;
                     }
                 }
