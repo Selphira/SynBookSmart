@@ -74,8 +74,8 @@ namespace BookSmart
 		
                 // Actually create the override record
                 var bookOverride = state.PatchMod.Books.GetOrAddAsOverride(book);
-                byte[] bytes = Encoding.Default.GetBytes(bookOverride);
-		bookOverride = Encoding.UTF8.GetString(bytes);
+                //byte[] bytes = Encoding.Default.GetBytes(bookOverride);
+		//bookOverride = Encoding.UTF8.GetString(bytes);
 		    
                 // Special handling for a labelFormat of Star
                 if (settings.labelFormat == Settings.LabelFormat.Étoile)
@@ -89,7 +89,7 @@ namespace BookSmart
                 // All other labelFormats
                 else
                 {
-                    bookOverride.Name = GetLabel(book.Name.ToString()!, String.Join("/", newTags));
+                    bookOverride.Name = GetLabel(i18nBookName.ToString()!, String.Join("/", newTags));
                 }
 
                 // Console output
