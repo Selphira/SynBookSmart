@@ -6,19 +6,19 @@ namespace BookSmart
     {
         // Which labels to add
         [SynthesisOrder]
-        [SynthesisTooltip("Add a skill tag to the book name if the book teaches a skill.")]
+        [SynthesisTooltip("Ajoutez le tag de compétence au nom du livre si le livre enseigne une compétence.")]
         public bool addSkillLabels = true;
         
         [SynthesisOrder]
-        [SynthesisTooltip("Add a map marker tag to the book name if the book teaches map markers.")]
+        [SynthesisTooltip("Ajoutez le tag marqueur de carte au nom du livre si le livre enseigne des marqueurs de carte.")]
         public bool addMapMarkerLabels = true;
 
         [SynthesisOrder]
-        [SynthesisTooltip("Add a quest tag to the book name if the book is used in a quest.")]
+        [SynthesisTooltip("Ajoute le tag quête au nom du livre si celui-ci est utilisé dans une quête.")]
         public bool addQuestLabels = true;
 
         [SynthesisOrder]
-        [SynthesisTooltip("Assumes that any BOOK with a script on it is a quest book. May incorrectly mark some books. Will improve detection for mod books that use their own scripts.")]
+        [SynthesisTooltip("Part du principe que tout LIVRE avec lié à un script est un livre de quête. Peut marquer incorrectement certains livres. Améliorera la détection des livres de mods qui utilisent leurs propres scripts.")]
         public bool assumeBookScriptsAreQuests = false;
 
         // Label Position
@@ -29,8 +29,8 @@ namespace BookSmart
         }
 
         [SynthesisOrder]
-        [SynthesisSettingName("Label Position")]
-        [SynthesisTooltip("Where to put the label when creating the new name.")]
+        [SynthesisSettingName("Position du tag")]
+        [SynthesisTooltip("Où placer le tag lors de la création du nouveau nom.")]
         public LabelPosition labelPosition { get; set; } = LabelPosition.Before_Name;
 
         // Label Format
@@ -42,7 +42,7 @@ namespace BookSmart
         }
 
         [SynthesisOrder]
-        [SynthesisSettingName("Label Format")]
+        [SynthesisSettingName("Format du tag")]
         [SynthesisTooltip("Star: *BookName\r\nShort: <Alch> BookName\r\nLong: <Alchemy> BookName")]
         public LabelFormat labelFormat { get; set; } = LabelFormat.Long;
 
@@ -57,7 +57,7 @@ namespace BookSmart
         }
 
         [SynthesisOrder]
-        [SynthesisSettingName("Encapsulating Characters")]
+        [SynthesisSettingName("Caractères d'encapsulation")]
         [SynthesisTooltip("The characters to wrap the skill name in.\r\nParenthesis: ()\r\nCurly Brackets: {}\r\nSquare Brackets: []\r\nChevrons: <>\r\nStars: *")]
         public EncapsulatingCharacters encapsulatingCharacters { get; set; } = EncapsulatingCharacters.Parenthesis;
     }
