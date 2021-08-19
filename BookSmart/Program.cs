@@ -8,6 +8,7 @@ using System.Text;
 
 namespace BookSmart
 {
+	book.Name.TryLookup(Language.French, out var i18nBookName);
     public class Program
     {
         // Settings
@@ -72,7 +73,7 @@ namespace BookSmart
 		
         	// Actually create the override record
                 var bookOverride = state.PatchMod.Books.GetOrAddAsOverride(book);
-                book.Name.TryLookup(Language.French, out var i18nBookName);
+                
 		    
                 // Special handling for a labelFormat of Star
                 if (settings.labelFormat == Settings.LabelFormat.Étoile)
