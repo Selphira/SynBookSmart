@@ -36,20 +36,20 @@ namespace BookSmart
         // Label Format
         public enum LabelFormat
         {
-            Star,
-            Short,
+            Étoile,
+            Court,
             Long
         }
 
         [SynthesisOrder]
         [SynthesisSettingName("Format du tag")]
-        [SynthesisTooltip("Star: *BookName\r\nShort: <Alch> BookName\r\nLong: <Alchemy> BookName")]
+        [SynthesisTooltip("Étoile: *BookName\r\nCourt: <Alch> BookName\r\nLong: <Alchemy> BookName")]
         public LabelFormat labelFormat { get; set; } = LabelFormat.Long;
 
         // Encapsulating Characters
         public enum EncapsulatingCharacters
         {
-            Parenthesis,
+            Parenthèses,
             Curly_Brackets,
             Square_Brackets,
             Chevrons,
