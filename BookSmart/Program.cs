@@ -175,6 +175,20 @@ namespace BookSmart
             {
                 return skillTeach.Skill switch
                 {
+                    Skill.Alchemy => "Alchimie",
+                    Skill.Alteration => "Altération",
+                    Skill.Archery => "Archerie",
+                    Skill.Block => "Parade",
+                    Skill.Conjuration => "Conjuration",
+                    Skill.Destruction => "Destreuction",
+                    Skill.Enchanting => "Enchantement",
+                    Skill.Illusion => "Illusion",
+                    Skill.Lockpicking => "Crochetage",
+                    Skill.Pickpocket => "Vol à la tir",
+                    Skill.Restoration => "Guérison",
+                    Skill.Smithing => "Forgeage",
+                    Skill.Sneak => "Furtivité",
+                    Skill.Speech => "Éloquence",
                     Skill.HeavyArmor => "Armure lourde",
                     Skill.LightArmor => "Armure légère",
                     Skill.OneHanded => "Une main",
