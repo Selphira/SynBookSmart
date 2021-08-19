@@ -71,7 +71,7 @@ namespace BookSmart
                 var bookOverride = state.PatchMod.Books.GetOrAddAsOverride(book);
                 
                 // Special handling for a labelFormat of Star
-                if (settings.labelFormat == Settings.LabelFormat.Star)
+                if (settings.labelFormat == Settings.LabelFormat.Étoile)
                 {
                     switch (settings.labelPosition) {
                         case Settings.LabelPosition.Before_Name: { bookOverride.Name = $"*{book.Name.ToString()}"; break; }
@@ -102,7 +102,7 @@ namespace BookSmart
                 case Settings.EncapsulatingCharacters.Curly_Brackets: { open = "{"; close = "}"; break; }
                 case Settings.EncapsulatingCharacters.Parenthèses: { open = "("; close = ")"; break; }
                 case Settings.EncapsulatingCharacters.Square_Brackets: { open = "["; close = "]"; break; }
-                case Settings.EncapsulatingCharacters.Stars: { open = "*"; close = "*"; break; }
+                case Settings.EncapsulatingCharacters.Étoiles: { open = "*"; close = "*"; break; }
                 default: throw new NotImplementedException("Somehow you set Encapsulating Characters to something that isn't supported.");
             }
 
@@ -183,7 +183,7 @@ namespace BookSmart
                 };
             }
             // Label Format: Short
-            else if (settings.labelFormat == Settings.LabelFormat.Short)
+            else if (settings.labelFormat == Settings.LabelFormat.Court)
             {
                 return skillTeach.Skill switch
                 {
@@ -209,7 +209,7 @@ namespace BookSmart
                 };
             }
             // Label Format: Star
-            else if (settings.labelFormat == Settings.LabelFormat.Star)
+            else if (settings.labelFormat == Settings.LabelFormat.Étoile)
             {
                 return "*";
             }
@@ -234,8 +234,8 @@ namespace BookSmart
                     return settings.labelFormat switch
                     {
                         Settings.LabelFormat.Long => "Marqueur carte",
-                        Settings.LabelFormat.Short => "Marqueur",
-                        Settings.LabelFormat.Star => "*",
+                        Settings.LabelFormat.Court => "Marqueur",
+                        Settings.LabelFormat.Étoile => "*",
                         _ => throw new NotImplementedException("Vous avez défini labelFormat sur quelque chose qui n'est pas supporté.")
                     };
                 }
@@ -275,8 +275,8 @@ namespace BookSmart
                 return settings.labelFormat switch
                 {
                     Settings.LabelFormat.Long => "Quête",
-                    Settings.LabelFormat.Short => "Q",
-                    Settings.LabelFormat.Star => "*",
+                    Settings.LabelFormat.Court => "Q",
+                    Settings.LabelFormat.Étoile => "*",
                     _ => throw new NotImplementedException("Vous avez défini labelFormat sur quelque chose qui n'est pas supporté.")
                 };
             } else
