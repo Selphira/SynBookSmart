@@ -100,7 +100,7 @@ namespace BookSmart
             {
                 case Settings.EncapsulatingCharacters.Chevrons: { open = "<"; close = ">"; break; }
                 case Settings.EncapsulatingCharacters.Curly_Brackets: { open = "{"; close = "}"; break; }
-                case Settings.EncapsulatingCharacters.Parenthesis: { open = "("; close = ")"; break; }
+                case Settings.EncapsulatingCharacters.Parenthèses: { open = "("; close = ")"; break; }
                 case Settings.EncapsulatingCharacters.Square_Brackets: { open = "["; close = "]"; break; }
                 case Settings.EncapsulatingCharacters.Stars: { open = "*"; close = "*"; break; }
                 default: throw new NotImplementedException("Somehow you set Encapsulating Characters to something that isn't supported.");
