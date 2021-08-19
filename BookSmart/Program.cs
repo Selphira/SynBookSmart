@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Synthesis;
 using Mutagen.Bethesda.Skyrim;
-using System.Text;
+//using System.Text;
 
 namespace BookSmart
 {
@@ -39,9 +39,7 @@ namespace BookSmart
             // Iterate all winning books from the load order
             foreach (var book in state.LoadOrder.PriorityOrder.OnlyEnabled().Book().WinningOverrides())
             {
-		book.Name.TryLookup(Language.French, out var i18nBookName);
-        	//string spellName = GetSpellNameFromSpellTome(i18nBookName.String);
-                // If the book has no name, skip it
+		                // If the book has no name, skip it
                 if (book.Name == null) { continue; }
 
                 // Store our new tags
@@ -71,29 +69,29 @@ namespace BookSmart
                 // If we don't have any new tags, no need for an override record
                 if (newTags.Count == 0) { continue; }
 		    
-		
+		bookOverride.TryLookup(Language.French, out var i18nBookName);
+        	//string spellName = GetOrAddAsOverride(i18nBookName.String);
                 // Actually create the override record
                 var bookOverride = state.PatchMod.Books.GetOrAddAsOverride(book);
-                //byte[] bytes = Encoding.Default.GetBytes(bookOverride);
-		//bookOverride = Encoding.UTF8.GetString(bytes);
+                
 		    
                 // Special handling for a labelFormat of Star
                 if (settings.labelFormat == Settings.LabelFormat.Étoile)
                 {
                     switch (settings.labelPosition) {
-                        case Settings.LabelPosition.Avant: { bookOverride.Name = $"*{i18nBookName.ToString()}"; break; }
-                        case Settings.LabelPosition.Après: { bookOverride.Name = $"{i18nBookName.ToString()}*"; break; }
+                        case Settings.LabelPosition.Avant: { bookOverride.Name = $"*{book.Name.ToString()}"; break; }
+                        case Settings.LabelPosition.Après: { bookOverride.Name = $"{book.Name.ToString()}*"; break; }
                         default: throw new NotImplementedException("Vous avez défini une position de label qui n'est pas supportée.");
                     }
                 }
                 // All other labelFormats
                 else
                 {
-                    bookOverride.Name = GetLabel(i18nBookName.ToString()!, String.Join("/", newTags));
+                    bookOverride.Name = GetLabel(book.Name.ToString()!, String.Join("/", newTags));
                 }
 
                 // Console output
-                Console.WriteLine($"{book.FormKey}: '{i18nBookName}' -> '{bookOverride.Name}'");
+                Console.WriteLine($"{book.FormKey}: '{book.Name}' -> '{bookOverride.Name}'");
             };
         }
 
@@ -285,7 +283,7 @@ namespace BookSmart
                 {
                     if (script.Name.Contains("Quest", StringComparison.OrdinalIgnoreCase) || settings.assumeBookScriptsAreQuests)
                     {
-                        Console.WriteLine($"{book.FormKey}: '{i18nBookName}' a un script de quête appelé '{script.Name}'.");
+                        Console.WriteLine($"{book.FormKey}: '{book.Name}' a un script de quête appelé '{script.Name}'.");
                         isBookQuestRealted = true;
                     }
                 }
