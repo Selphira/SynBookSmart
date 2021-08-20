@@ -91,7 +91,7 @@ namespace BookSmart
                 }
 
                 // Console output
-                Console.WriteLine($"{book.FormKey}: '{i18nBookName}' -> '{bookOverride.Name}'");
+                Console.WriteLine($"{book.FormKey}: '{book.Name}' -> '{bookOverride.Name}'");
             };
         }
 
@@ -145,7 +145,7 @@ namespace BookSmart
                                 questBookCache.Add(questObject.FormKey.ToString());
                             }
                         }
-Console.WriteLine("les objets");
+
                         // Items alias
                         if (alias.Items is not null)
                         {
@@ -280,10 +280,10 @@ Console.WriteLine("les objets");
             {
                 foreach (var script in book.VirtualMachineAdapter.Scripts)
                 {
-		book.Name.TryLookup(Language.French, out var i18nBookName);	
+			
                     if (script.Name.Contains("Quest", StringComparison.OrdinalIgnoreCase) || settings.assumeBookScriptsAreQuests)
                     {
-                        Console.WriteLine($"{book.FormKey}: '{i18nBookName}' a un script de quête appelé '{script.Name}'.");
+                        Console.WriteLine($"{book.FormKey}: '{book.Name}' a un script de quête appelé '{script.Name}'.");
                         isBookQuestRealted = true;
                     }
                 }
