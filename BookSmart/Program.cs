@@ -61,7 +61,7 @@ namespace BookSmart
                 }
 
                 // Add Quest labels
-                if (settings.ajouteTagQuetes)
+                if (settings.ajouterTagQuetes)
                 {
                     var questLabel = GetQuestLabelName(book, questBookCache);
                     if (questLabel is not null) { newTags.Add(questLabel); }
