@@ -267,9 +267,8 @@ namespace BookSmart
         public static string? GetQuestLabelName(IBookGetter book, List<string> questBookCache)
         {
             bool isBookQuestRealted = false;
-	book.Name.TryLookup(Language.French, out var i18nBookName);
+		Console.WriteLine("Je plante ici");
             // Check the Quest Book Cache
-            
             if (questBookCache.Contains(book.FormKey.ToString()))
             {
                 isBookQuestRealted = true;
@@ -281,6 +280,7 @@ namespace BookSmart
             {
                 foreach (var script in book.VirtualMachineAdapter.Scripts)
                 {
+			book.Name.TryLookup(Language.French, out var i18nBookName);
                     if (script.Name.Contains("Quest", StringComparison.OrdinalIgnoreCase) || settings.assumeBookScriptsAreQuests)
                     {
                         Console.WriteLine($"{book.FormKey}: '{i18nBookName}' a un script de quête appelé '{script.Name}'.");
