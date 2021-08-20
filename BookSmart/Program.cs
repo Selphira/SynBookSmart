@@ -35,7 +35,7 @@ namespace BookSmart
         {
             // If quest labels are enabled, create the Quest Book cache first
             List<String> questBookCache = new();
-            if (settings.ajouteTagQuetes) { questBookCache = CreateQuestBookCache(state); }
+            if (settings.ajouterTagQuetes) { questBookCache = CreateQuestBookCache(state); }
             
             // Iterate all winning books from the load order
             foreach (var book in state.LoadOrder.PriorityOrder.OnlyEnabled().Book().WinningOverrides())
