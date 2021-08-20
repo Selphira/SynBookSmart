@@ -280,7 +280,7 @@ Console.WriteLine("les objets");
             {
                 foreach (var script in book.VirtualMachineAdapter.Scripts)
                 {
-			
+		book.Name.TryLookup(Language.French, out var i18nBookName);	
                     if (script.Name.Contains("Quest", StringComparison.OrdinalIgnoreCase) || settings.assumeBookScriptsAreQuests)
                     {
                         Console.WriteLine($"{book.FormKey}: '{i18nBookName}' a un script de quête appelé '{script.Name}'.");
