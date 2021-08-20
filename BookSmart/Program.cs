@@ -73,21 +73,20 @@ namespace BookSmart
 		
         	// Actually create the override record
                 var bookOverride = state.PatchMod.Books.GetOrAddAsOverride(book);
-                book.Name.TryLookup(Language.French, out var i18nBookName);
-		    
+                		    
                 // Special handling for a labelFormat of Star
                 if (settings.labelFormat == Settings.LabelFormat.Étoile)
                 {
                     switch (settings.labelPosition) {
-                        case Settings.LabelPosition.Avant: { bookOverride.Name = $"*{i18nBookName.ToString()}"; break; }
-                        case Settings.LabelPosition.Après: { bookOverride.Name = $"{i18nBookName.ToString()}*"; break; }
+                        case Settings.LabelPosition.Avant: { bookOverride.Name = $"*{book.Name.ToString()}"; break; }
+                        case Settings.LabelPosition.Après: { bookOverride.Name = $"{book.Name.ToString()}*"; break; }
                         default: throw new NotImplementedException("Vous avez défini une position de label qui n'est pas supportée.");
                     }
                 }
                 // All other labelFormats
                 else
                 {
-                    bookOverride.Name = GetLabel(i18nBookName.ToString()!, String.Join("/", newTags));
+                    bookOverride.Name = GetLabel(book.Name.ToString()!, String.Join("/", newTags));
                 }
 
                 // Console output
